@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI & Website Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    header {
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    header h1 {
+      font-size: 2.8rem;
+      color: #f8f8f8;
+      margin-bottom: 10px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+    header p {
+      font-size: 1.2rem;
+      color: #d1d1d1;
+      font-weight: 500;
+    }
+    main {
+      width: 100%;
+      max-width: 1200px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: linear-gradient(145deg, #ffffffcc, #e0e7ffcc);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: saturate(180%) blur(12px);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      background: linear-gradient(145deg, #ffffffee, #d0d7ffee);
+      border-color: #a0a8ff;
+    }
+    .card h2 {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: #2c3e50;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+    }
+    .card p {
+      flex-grow: 1;
+      font-size: 1.05rem;
+      color: #4a4a4a;
+      margin-bottom: 18px;
+      line-height: 1.4;
+    }
+    .card a {
+      text-decoration: none;
+      background: #5a67d8;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(90,103,216,0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card a:hover {
+      background: #434aa8;
+      box-shadow: 0 6px 16px rgba(67,74,168,0.8);
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 1rem;
+      color: #cbd5e0;
+      text-align: center;
+      width: 100%;
+      max-width: 1200px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .card h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI & Website Dashboard</h1>
+    <p>Manage and access your favorite AI tools and websites in one place</p>
+  </header>
+  <main>
+    <section class="card">
+      <h2>ChatGPT</h2>
+      <p>OpenAI's powerful conversational AI model for natural language understanding and generation.</p>
+      <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">Open ChatGPT</a>
+    </section>
+    <section class="card">
+      <h2>DALL·E 2</h2>
+      <p>Generate stunning images from text prompts using OpenAI's DALL·E 2 AI model.</p>
+      <a href="https://openai.com/dall-e-2" target="_blank" rel="noopener noreferrer">Open DALL·E 2</a>
+    </section>
+    <section class="card">
+      <h2>Google Search</h2>
+      <p>Access the world's most popular search engine for all your information needs.</p>
+      <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Open Google</a>
+    </section>
+    <section class="card">
+      <h2>GitHub</h2>
+      <p>Collaborate on code, manage projects, and host your repositories on GitHub.</p>
+      <a href="https://github.com" target="_blank" rel="noopener noreferrer">Open GitHub</a>
+    </section>
+    <section class="card">
+      <h2>Hugging Face</h2>
+      <p>Explore and deploy state-of-the-art machine learning models and datasets.</p>
+      <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">Open Hugging Face</a>
+    </section>
+    <section class="card">
+      <h2>Stack Overflow</h2>
+      <p>Get answers to your programming questions from a large developer community.</p>
+      <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Open Stack Overflow</a>
+    </section>
+  </main>
+  <footer>
+    &copy; 2024 AI & Website Dashboard. All rights reserved.
+  </footer>
+</body>
+</html>
