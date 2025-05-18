@@ -1,158 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI & Website Dashboard</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #f0f0f0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    header {
-      width: 100%;
-      max-width: 1200px;
-      margin-bottom: 30px;
-      text-align: center;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-    header h1 {
-      font-size: 2.8rem;
-      color: #f8f8f8;
-      margin-bottom: 10px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-    }
-    header p {
-      font-size: 1.2rem;
-      color: #d1d1d1;
-      font-weight: 500;
-    }
-    main {
-      width: 100%;
-      max-width: 1200px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .card {
-      background: linear-gradient(145deg, #ffffffcc, #e0e7ffcc);
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      backdrop-filter: saturate(180%) blur(12px);
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-      background: linear-gradient(145deg, #ffffffee, #d0d7ffee);
-      border-color: #a0a8ff;
-    }
-    .card h2 {
-      font-size: 1.6rem;
-      margin-bottom: 12px;
-      color: #2c3e50;
-      text-shadow: 0 1px 2px rgba(255,255,255,0.7);
-    }
-    .card p {
-      flex-grow: 1;
-      font-size: 1.05rem;
-      color: #4a4a4a;
-      margin-bottom: 18px;
-      line-height: 1.4;
-    }
-    .card a {
-      text-decoration: none;
-      background: #5a67d8;
-      color: white;
-      padding: 12px 18px;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: 700;
-      box-shadow: 0 4px 12px rgba(90,103,216,0.6);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card a:hover {
-      background: #434aa8;
-      box-shadow: 0 6px 16px rgba(67,74,168,0.8);
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 1rem;
-      color: #cbd5e0;
-      text-align: center;
-      width: 100%;
-      max-width: 1200px;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-    }
-    @media (max-width: 480px) {
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI & Website Dashboard</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #f0f0f0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      header {
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 30px;
+        text-align: center;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      }
       header h1 {
-        font-size: 2rem;
+        font-size: 2.8rem;
+        color: #f8f8f8;
+        margin-bottom: 10px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+      }
+      header p {
+        font-size: 1.2rem;
+        color: #d1d1d1;
+        font-weight: 500;
+      }
+      main {
+        width: 100%;
+        max-width: 1200px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .card {
+        background: linear-gradient(145deg, #ffffffcc, #e0e7ffcc);
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: saturate(180%) blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+        background: linear-gradient(145deg, #ffffffee, #d0d7ffee);
+        border-color: #a0a8ff;
       }
       .card h2 {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
+        margin-bottom: 12px;
+        color: #2c3e50;
+        text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
       }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <h1>AI & Website Dashboard</h1>
-    <p>Manage and access your favorite AI tools and websites in one place</p>
-  </header>
-  <main>
-    <section class="card">
-      <h2>ChatGPT</h2>
-      <p>OpenAI's powerful conversational AI model for natural language understanding and generation.</p>
-      <a href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">Open ChatGPT</a>
-    </section>
-    <section class="card">
-      <h2>DALL·E 2</h2>
-      <p>Generate stunning images from text prompts using OpenAI's DALL·E 2 AI model.</p>
-      <a href="https://openai.com/dall-e-2" target="_blank" rel="noopener noreferrer">Open DALL·E 2</a>
-    </section>
-    <section class="card">
-      <h2>Google Search</h2>
-      <p>Access the world's most popular search engine for all your information needs.</p>
-      <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Open Google</a>
-    </section>
-    <section class="card">
-      <h2>GitHub</h2>
-      <p>Collaborate on code, manage projects, and host your repositories on GitHub.</p>
-      <a href="https://github.com" target="_blank" rel="noopener noreferrer">Open GitHub</a>
-    </section>
-    <section class="card">
-      <h2>Hugging Face</h2>
-      <p>Explore and deploy state-of-the-art machine learning models and datasets.</p>
-      <a href="https://huggingface.co" target="_blank" rel="noopener noreferrer">Open Hugging Face</a>
-    </section>
-    <section class="card">
-      <h2>Stack Overflow</h2>
-      <p>Get answers to your programming questions from a large developer community.</p>
-      <a href="https://stackoverflow.com" target="_blank" rel="noopener noreferrer">Open Stack Overflow</a>
-    </section>
-  </main>
-  <footer>
-    &copy; 2024 AI & Website Dashboard. All rights reserved.
-  </footer>
-</body>
+      .card p {
+        flex-grow: 1;
+        font-size: 1.05rem;
+        color: #4a4a4a;
+        margin-bottom: 18px;
+        line-height: 1.4;
+      }
+      .card a {
+        text-decoration: none;
+        background: #5a67d8;
+        color: white;
+        padding: 12px 18px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(90, 103, 216, 0.6);
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card a:hover {
+        background: #434aa8;
+        box-shadow: 0 6px 16px rgba(67, 74, 168, 0.8);
+      }
+      footer {
+        margin-top: 50px;
+        font-size: 1rem;
+        color: #cbd5e0;
+        text-align: center;
+        width: 100%;
+        max-width: 1200px;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      @media (max-width: 480px) {
+        header h1 {
+          font-size: 2rem;
+        }
+        .card h2 {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>AI & Website Dashboard</h1>
+      <p>Manage and access your favorite AI tools and websites in one place</p>
+    </header>
+    <main>
+      <section class="card">
+        <h2>ChatGPT</h2>
+        <p>
+          OpenAI's powerful conversational AI model for natural language
+          understanding and generation.
+        </p>
+        <a
+          href="https://chat.openai.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open ChatGPT</a
+        >
+      </section>
+      <section class="card">
+        <h2>DALL·E 2</h2>
+        <p>
+          Generate stunning images from text prompts using OpenAI's DALL·E 2 AI
+          model.
+        </p>
+        <a
+          href="https://openai.com/dall-e-2"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open DALL·E 2</a
+        >
+      </section>
+      <section class="card">
+        <h2>Google Search</h2>
+        <p>
+          Access the world's most popular search engine for all your information
+          needs.
+        </p>
+        <a
+          href="https://www.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Google</a
+        >
+      </section>
+      <section class="card">
+        <h2>GitHub</h2>
+        <p>
+          Collaborate on code, manage projects, and host your repositories on
+          GitHub.
+        </p>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+          >Open GitHub</a
+        >
+      </section>
+      <section class="card">
+        <h2>Hugging Face</h2>
+        <p>
+          Explore and deploy state-of-the-art machine learning models and
+          datasets.
+        </p>
+        <a
+          href="https://huggingface.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Hugging Face</a
+        >
+      </section>
+      <section class="card">
+        <h2>Stack Overflow</h2>
+        <p>
+          Get answers to your programming questions from a large developer
+          community.
+        </p>
+        <a
+          href="https://stackoverflow.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Stack Overflow</a
+        >
+      </section>
+      <!-- Added Tools Sections -->
+      <!-- Writing & Copy Generation Tools -->
+      <section class="card">
+        <h2>Copy.ai</h2>
+        <p>AI tool for generating marketing copy and content.</p>
+        <a href="https://www.copy.ai" target="_blank" rel="noopener noreferrer"
+          >Open Copy.ai</a
+        >
+      </section>
+      <section class="card">
+        <h2>Grammarly</h2>
+        <p>Writing assistant for grammar and style checking.</p>
+        <a
+          href="https://www.grammarly.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Grammarly</a
+        >
+      </section>
+      <section class="card">
+        <h2>Hemingway Editor</h2>
+        <p>Tool to improve readability and clarity of writing.</p>
+        <a
+          href="http://www.hemingwayapp.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Hemingway Editor</a
+        >
+      </section>
+      <section class="card">
+        <h2>Google Docs</h2>
+        <p>Online document editor and collaboration tool.</p>
+        <a
+          href="https://docs.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Google Docs</a
+        >
+      </section>
+
+      <!-- SEO, Resume & Optimization Tools -->
+      <section class="card">
+        <h2>Surfer SEO</h2>
+        <p>SEO optimization tool for content analysis and ranking.</p>
+        <a
+          href="https://surferseo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Surfer SEO</a
+        >
+      </section>
+      <section class="card">
+        <h2>Google Keyword Planner</h2>
+        <p>Tool for researching keywords and search volume.</p>
+        <a
+          href="https://ads.google.com/home/tools/keyword-planner/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Google Keyword Planner</a
+        >
+      </section>
+      <section class="card">
+        <h2>Resume Worded</h2>
+        <p>Resume optimization and feedback tool.</p>
+        <a
+          href="https://resumeworded.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Resume Worded</a
+        >
+      </section>
+      <section class="card">
+        <h2>Rezi.ai</h2>
+        <p>AI-powered resume builder and optimizer.</p>
+        <a href="https://www.rezi.ai" target="_blank" rel="noopener noreferrer"
+          >Open Rezi.ai</a
+        >
+      </section>
+      <section class="card">
+        <h2>Jobscan</h2>
+        <p>Resume and job description matching tool.</p>
+        <a
+          href="https://www.jobscan.co"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Jobscan</a
+        >
+      </section>
+
+      <!-- Design & Branding Tools -->
+      <section class="card">
+        <h2>Canva</h2>
+        <p>Online graphic design tool.</p>
+        <a
+          href="https://www.canva.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Canva</a
+        >
+      </section>
+      <section class="card">
+        <h2>Looka</h2>
+        <p>AI-powered logo and branding design tool.</p>
+        <a href="https://looka.com" target="_blank" rel="noopener noreferrer"
+          >Open Looka</a
+        >
+      </section>
+      <section class="card">
+        <h2>Remove.bg</h2>
+        <p>Background removal tool for images.</p>
+        <a
+          href="https://www.remove.bg"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Remove.bg</a
+        >
+      </section>
+      <section class="card">
+        <h2>Color Hunt</h2>
+        <p>Color palette inspiration tool.</p>
+        <a href="https://colorhunt.co" target="_blank" rel="noopener noreferrer"
+          >Open Color Hunt</a
+        >
+      </section>
+      <section class="card">
+        <h2>VistaCreate</h2>
+        <p>Online design tool for creating visuals and videos.</p>
+        <a
+          href="https://vistacreate.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open VistaCreate</a
+        >
+      </section>
+      <section class="card">
+        <h2>Crello</h2>
+        <p>Graphic design tool for social media and marketing.</p>
+        <a href="https://crello.com" target="_blank" rel="noopener noreferrer"
+          >Open Crello</a
+        >
+      </section>
+
+      <!-- Social Media, Scheduling & Workflow Tools -->
+      <section class="card">
+        <h2>Later</h2>
+        <p>Social media scheduling and management tool.</p>
+        <a href="https://later.com" target="_blank" rel="noopener noreferrer"
+          >Open Later</a
+        >
+      </section>
+      <section class="card">
+        <h2>HashTagStack</h2>
+        <p>Tool for generating and managing hashtags.</p>
+        <a
+          href="https://hashtagstack.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open HashTagStack</a
+        >
+      </section>
+      <section class="card">
+        <h2>Trello</h2>
+        <p>Project management and collaboration tool.</p>
+        <a href="https://trello.com" target="_blank" rel="noopener noreferrer"
+          >Open Trello</a
+        >
+      </section>
+      <section class="card">
+        <h2>ClickUp</h2>
+        <p>Task management and productivity tool.</p>
+        <a href="https://clickup.com" target="_blank" rel="noopener noreferrer"
+          >Open ClickUp</a
+        >
+      </section>
+      <section class="card">
+        <h2>Google Drive</h2>
+        <p>Cloud storage and file sharing service.</p>
+        <a
+          href="https://drive.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Google Drive</a
+        >
+      </section>
+
+      <!-- Bonus AI Tools -->
+      <section class="card">
+        <h2>Adobe Firefly</h2>
+        <p>AI-powered creative image generation tool.</p>
+        <a
+          href="https://www.adobe.com/sensei/generative-ai/firefly.html"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Adobe Firefly</a
+        >
+      </section>
+      <section class="card">
+        <h2>DALL·E</h2>
+        <p>AI image generation model by OpenAI.</p>
+        <a
+          href="https://openai.com/dall-e"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open DALL·E</a
+        >
+      </section>
+      <section class="card">
+        <h2>Leonardo AI</h2>
+        <p>AI platform for creative image generation.</p>
+        <a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer"
+          >Open Leonardo AI</a
+        >
+      </section>
+      <section class="card">
+        <h2>Midjourney</h2>
+        <p>AI-based image generation tool.</p>
+        <a
+          href="https://www.midjourney.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Midjourney</a
+        >
+      </section>
+      <section class="card">
+        <h2>Luminar AI</h2>
+        <p>AI photo editing software.</p>
+        <a
+          href="https://skylum.com/luminar-ai"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Luminar AI</a
+        >
+      </section>
+      <section class="card">
+        <h2>Visme</h2>
+        <p>Online tool for creating presentations and infographics.</p>
+        <a href="https://www.visme.co" target="_blank" rel="noopener noreferrer"
+          >Open Visme</a
+        >
+      </section>
+
+      <!-- Security/Privacy Tools -->
+      <section class="card">
+        <h2>Temp Mail</h2>
+        <p>Temporary disposable email service.</p>
+        <a
+          href="https://temp-mail.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Temp Mail</a
+        >
+      </section>
+      <section class="card">
+        <h2>Burner Mail</h2>
+        <p>Disposable email forwarding service.</p>
+        <a
+          href="https://burnermail.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Burner Mail</a
+        >
+      </section>
+      <section class="card">
+        <h2>Bitwarden</h2>
+        <p>Password manager and secure vault.</p>
+        <a
+          href="https://bitwarden.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Bitwarden</a
+        >
+      </section>
+      <section class="card">
+        <h2>Proton Pass</h2>
+        <p>Secure password manager by Proton.</p>
+        <a
+          href="https://proton.me/pass"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open Proton Pass</a
+        >
+      </section>
+      <section class="card">
+        <h2>SimpleLogin</h2>
+        <p>Email aliasing and privacy tool.</p>
+        <a
+          href="https://simplelogin.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open SimpleLogin
+        </a>
+      </section>
+    </main>
+    <footer>&copy; 2024 AI & Website Dashboard. All rights reserved.</footer>
+  </body>
 </html>
